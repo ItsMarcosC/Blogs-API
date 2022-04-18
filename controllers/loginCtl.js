@@ -6,10 +6,8 @@ const { JWT_SECRET } = process.env;
 const newLogin = async (req, res) => {
   try {
     const payload = {
-      data: {
-        ...req.body,
-        admin: false,
-      },
+      ...req.body,
+      admin: false,
     };
 
     const jwtConfig = {

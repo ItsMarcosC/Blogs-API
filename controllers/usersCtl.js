@@ -6,10 +6,8 @@ const { JWT_SECRET } = process.env;
 const createUser = async (req, res) => {
 try {
   const payload = {
-    data: {
-      ...req.body,
-      admin: false,
-    },
+    ...req.body,
+    admin: false,
   };
   const jwtConfig = {
     expiresIn: '7d',
