@@ -39,9 +39,9 @@ const validateToken = async (req, res, next) => {
     if (!authorization) {
       return res.status(401).json({ message: 'Token not found' });
     }
-    const { email } = jwt.verify(authorization, JWT_SECRET);
-    const findUser = await User.findOne({ where: { email } });
-    if (validate(authorization, email, findUser)) {
+    const { data } = jwt.verify(authorization, JWT_SECRET);
+    const findUser = await User.findOne({ where: data.email });
+    if (validate(authorization, data.email, findUser)) {
       throw Error;
     }
     next();
