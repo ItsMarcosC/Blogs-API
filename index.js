@@ -3,6 +3,7 @@ const express = require('express');
 const userRt = require('./routers/userRt');
 const loginRt = require('./routers/loginRt');
 const categoryRt = require('./routers/categoryRt');
+const postRt = require('./routers/postRt');
 const errorMdw = require('./middlewares/errorMdw');
 
 const app = express();
@@ -15,6 +16,7 @@ app.get('/', (request, response) => {
 app.use('/user', userRt);
 app.use('/login', loginRt);
 app.use('/categories', categoryRt);
+app.use('/post', postRt);
 app.use(errorMdw);
 
 const PORT = process.env.PORT || 3000; 

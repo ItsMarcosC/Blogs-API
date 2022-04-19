@@ -41,6 +41,7 @@ const validateToken = async (req, res, next) => {
     }
     const { email } = jwt.verify(authorization, JWT_SECRET);
     const findUser = await User.findOne({ where: { email } });
+    req.userId = findUser.dataValues.id;
     if (validate(authorization, email, findUser)) {
       throw Error;
     }
