@@ -6,5 +6,6 @@ const postCtl = require('../controllers/postCtl');
 const router = express.Router();
 
 router.post('/', validateInfo, validateToken, searchDuplicatedCategory, postCtl.sendPost);
+router.get('/', validateToken, postCtl.findPost);
 
 module.exports = router;
