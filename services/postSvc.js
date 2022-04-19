@@ -1,14 +1,19 @@
-const { BlogPost } = require('../models');
+const { BlogPost, User, Category } = require('../models');
 
-const createPost = async (obj) => {
-  const { title, content, userId } = obj;
-  const newDate = new Date();
-  const result = await BlogPost.create(
-    { userId, title, content, published: newDate, updated: newDate },
-);
+const createPost = async (param) => {
+  const { title, content, userId } = param;
+  const result = await BlogPost.create({ userId, title, content });
   return result;
 };
 
-module.exports = {
-  createPost,
+const getPosts = async () => {
+  const result = await BlogPost.findAll({
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
+    ],
+  });
+  return result;
 };
+
+module.exports = { createPost, getPosts };

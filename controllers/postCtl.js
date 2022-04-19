@@ -1,5 +1,4 @@
-const { BlogPost, User, Category } = require('../models');
-const { createPost } = require('../services/postSvc');
+const { createPost, getPosts } = require('../services/postSvc');
 
 const sendPost = async (req, res) => {
   try {
@@ -18,18 +17,11 @@ const sendPost = async (req, res) => {
   }
 };
 
-const findPost = async (req, res) => {
+const findPost = async (_req, res) => {
   try {
-    const posts = await BlogPost.findAll({
-      include: [
-        { model: User, as: 'user', attributes: { exclude: ['password'] } },
-        { model: Category, as: 'categories', through: { attributes: [] } },
-      ],
-    });
+    const posts = await getPosts();
     return res.status(200).json(posts);
   } catch (error) {
-    console.log(error);
-    console.log(error.message);
     return res.status(401).json({ message: error.message });
   }
 };
