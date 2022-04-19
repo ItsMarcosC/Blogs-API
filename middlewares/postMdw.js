@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const { Category } = require('../models');
 
-const validatePost = (req, res, next) => {
+const validateInfo = (req, res, next) => {
   const { error } = Joi.object({
     title: Joi.string().required(),
     content: Joi.string().required(),
@@ -17,9 +17,9 @@ const searchDuplicatedCategory = async (req, res, next) => {
   try {
     const result = await Category.findAll();
     const { categoryIds } = req.body;
-    categoryIds.forEach((i) => {
-      const getCategory = result.find((item) => item.dataValues.id === i);
-      if (!getCategory) {
+    categoryIds.forEach((index) => {
+      const searchCategory = result.find((item) => item.dataValues.id === index);
+      if (!searchCategory) {
         throw Error;
       }
     });
@@ -31,6 +31,6 @@ const searchDuplicatedCategory = async (req, res, next) => {
 };
 
 module.exports = {
-  validatePost,
+  validateInfo,
   searchDuplicatedCategory,
 };

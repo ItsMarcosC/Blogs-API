@@ -1,10 +1,10 @@
 const express = require('express');
-const { validatePost, searchDuplicatedCategory } = require('../middlewares/postMdw');
+const { validateInfo, searchDuplicatedCategory } = require('../middlewares/postMdw');
 const { validateToken } = require('../middlewares/userMdw');
 const postCtl = require('../controllers/postCtl');
 
 const router = express.Router();
 
-router.post('/', validatePost, validateToken, searchDuplicatedCategory, postCtl.createPost);
+router.post('/', validateInfo, validateToken, searchDuplicatedCategory, postCtl.sendPost);
 
 module.exports = router;
