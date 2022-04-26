@@ -30,7 +30,4 @@ const searchDuplicatedCategory = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  validateInfo,
-  searchDuplicatedCategory,
-};
+module.exports = { validateInfo, searchDuplicatedCategory };

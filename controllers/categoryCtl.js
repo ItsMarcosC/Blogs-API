@@ -22,7 +22,4 @@ const searchCategory = async (_req, res) => {
   }
 };
 
-module.exports = {
-  createCategory,
-  searchCategory,
-};
+module.exports = { createCategory, searchCategory };

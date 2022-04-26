@@ -23,6 +23,4 @@ const newLogin = async (req, res) => {
   }
 };
 
-module.exports = {
-  newLogin,
-};
+module.exports = { newLogin };

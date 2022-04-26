@@ -9,6 +9,4 @@ const validateCategory = (req, res, next) => {
   }
   next();
 };
-module.exports = {
-  validateCategory,
-};
+module.exports = { validateCategory };

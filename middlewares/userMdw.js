@@ -4,6 +4,13 @@ const { User } = require('../models');
 
 const { JWT_SECRET } = process.env;
 
+const validate = (auth, email, findUser) => {
+  if (!auth || !email || !findUser) {
+    return true;
+  }
+  return false;
+};
+
 const validateUser = (req, res, next) => {
   const { error } = Joi.object({
     displayName: Joi.string().min(8).required(),
@@ -24,13 +31,6 @@ const searchDuplicated = async (req, res, next) => {
       return res.status(409).json({ message: 'User already registered' });
     }
     next();
-};
-
-const validate = (auth, email, findUser) => {
-  if (!auth || !email || !findUser) {
-    return true;
-  }
-  return false;
 };
 
 const validateToken = async (req, res, next) => {
@@ -61,9 +61,4 @@ const findById = async (req, res, next) => {
   next();
 };
 
-module.exports = {
-  validateUser,
-  searchDuplicated,
-  validateToken,
-  findById,
-};
+module.exports = { validateUser, searchDuplicated, validateToken, findById };

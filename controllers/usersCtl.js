@@ -40,8 +40,4 @@ const findUserById = async (req, res) => {
   }
 };
 
-module.exports = {
-  createUser,
-  findUsers,
-  findUserById,
-};
+module.exports = { createUser, findUsers, findUserById };

@@ -26,7 +26,4 @@ const findPost = async (_req, res) => {
   }
 };
 
-module.exports = {
-  sendPost,
-  findPost,
-}; 
+module.exports = { sendPost, findPost };

@@ -19,7 +19,4 @@ const searchDuplicatedUser = async (req, res, next) => {
   }
   next();
 };
-module.exports = {
-  validateInfo,
-  searchDuplicatedUser,
-};
+module.exports = { validateInfo, searchDuplicatedUser };
