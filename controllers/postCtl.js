@@ -12,7 +12,6 @@ const sendPost = async (req, res) => {
     const { id } = data.dataValues;
     res.status(201).json({ id, ...obj });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ message: error.message });
   }
 };
