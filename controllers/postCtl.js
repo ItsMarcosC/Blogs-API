@@ -17,7 +17,7 @@ const sendPost = async (req, res) => {
   }
 };
 
-const findPost = async (_req, res) => {
+const findPost = async (req, res) => {
   try {
     const posts = await getPosts();
     return res.status(200).json(posts);
