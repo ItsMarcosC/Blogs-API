@@ -6,7 +6,6 @@ const createCategory = async (req, res) => {
     await Category.create({ name });
     res.status(201).json({ name });
   } catch (error) {
-    console.log(error);
     res.status(401).json({ message: error.message });
   }
 };
@@ -16,8 +15,6 @@ const searchCategory = async (_req, res) => {
     const result = await Category.findAll();
     return res.status(200).json(result);
   } catch (error) {
-    console.log(error);
-    console.log(error.message);
     return res.status(401).json({ message: error.message });
   }
 };
